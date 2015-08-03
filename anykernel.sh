@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # EDIFY properties
 kernel.string=Render Kernel by RenderBroken!
-do.devicecheck=1
+do.devicecheck=0
 do.initd=1
 do.modules=1
 do.cleanup=0
@@ -155,15 +155,15 @@ dump_boot;
 cp -fp $patch/init.d/* $initd
 chmod -R 766 $initd
 
-# remove mpdecsion binary
-mv $bindir/mpdecision $bindir/mpdecision-rm
+# mpdecsion binary
+mv $bindir/mpdecision-rm $bindir/mpdecision
 
 # adb secure
 backup_file default.prop;
 replace_string default.prop "ro.adb.secure=0" "ro.adb.secure=1" "ro.adb.secure=0";
 replace_string default.prop "ro.secure=0" "ro.secure=1" "ro.secure=0";
 
-# init.bacon.rc
+# init.mmi.rc
 backup_file init.mmi.rc;
 append_file init.mmi.rc "render-post_boot" init.mmi.patch;
 

@@ -38,13 +38,6 @@ echo 5 > /proc/sys/vm/dirty_background_ratio
 echo 10 > /proc/sys/vm/swappiness
 
 ############################
-# ZRAM Settings
-#
-#echo "lzo [lz4]" > /sys/block/zram0/comp_algorithm
-#echo 3 > /sys/block/zram0/max_comp_stream
-#echo 300 > /sys/devices/virtual/block/zram0/disksize
-
-############################
 # Power Effecient Workqueues (Enable for battery)
 #
 echo 1 > /sys/module/workqueue/parameters/power_efficient
@@ -52,10 +45,10 @@ echo 1 > /sys/module/workqueue/parameters/power_efficient
 ############################
 # MSM Limiter
 #
-echo 146400 > /sys/kernel/msm_limiter/suspend_min_freq_0
-echo 146400 > /sys/kernel/msm_limiter/suspend_min_freq_1
-echo 146400 > /sys/kernel/msm_limiter/suspend_min_freq_2
-echo 146400 > /sys/kernel/msm_limiter/suspend_min_freq_3
+echo 300000 > /sys/kernel/msm_limiter/suspend_min_freq_0
+echo 300000 > /sys/kernel/msm_limiter/suspend_min_freq_1
+echo 300000 > /sys/kernel/msm_limiter/suspend_min_freq_2
+echo 300000 > /sys/kernel/msm_limiter/suspend_min_freq_3
 echo 2457600 > /sys/kernel/msm_limiter/resume_max_freq_0
 echo 2457600 > /sys/kernel/msm_limiter/resume_max_freq_1
 echo 2457600 > /sys/kernel/msm_limiter/resume_max_freq_2
@@ -134,19 +127,6 @@ echo "0" > /sys/module/alarm_dev/parameters/debug_mask;
 echo "0" > /sys/module/binder/parameters/debug_mask;
 echo "0" > /sys/module/xt_qtaguid/parameters/debug_mask;
 echo "[Render-Kernel] disable debug mask" | tee /dev/kmsg
-
-############################
-# KCAL Tunings Thanks AK!
-#
-echo "250 250 255" > /sys/devices/platform/kcal_ctrl.0/kcal
-echo "35" > /sys/devices/platform/kcal_ctrl.0/kcal_min
-echo "1" > /sys/devices/platform/kcal_ctrl.0/kcal_enable
-echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_invert
-echo "285" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
-echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
-echo "245" > /sys/devices/platform/kcal_ctrl.0/kcal_val
-echo "264" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
-echo "[Render-Kernel] kcal sgs amoled settings done" | tee /dev/kmsg
 
 ############################
 # Init.d Support
